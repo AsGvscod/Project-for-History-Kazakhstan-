@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <title>The Steppe</title>
+</head>
+
+<body>
+
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="video/video_2026-09-07_09-50-44.mp4" type="video/mp4">
+    </video>
+    <div id="bg-overlay"></div>
+
+    <header id="hat">
+        <button type="button" class="icon-btn" id="button-back" style="display: none;" aria-label="Back">
+            <span>&larr; Back</span>
+        </button>
+
+        <button type="button" class="icon-btn" id="button-info2" aria-label="Info">
+            <span>Info</span>
+        </button>
+
+        <div id="div-topic-timer" style="display: none;">
+            <p id="p-topic-timer"></p>
+        </div>
+
+        <button type="button" class="icon-btn" id="button-exit" style="display: none;" aria-label="Exit">
+            <span>Exit</span>
+        </button>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="mainbox-home-screen" class="screen" style="display: grid;">
+            <div class="hero-panel">
+                <p class="eyebrow">History of Kazakhstan</p>
+                <h1>the steppe</h1>
+                <span class="hero-divider"></span>
+                <p class="subtitle">Interactive quizzes and essays, week by week</p>
+
+                <div id="home-button">
+                    <button type="button" class="button-home" data-mode="quiz" id="button-test2">
+                        <span class="btn-icon">🧭</span>
+                        <span class="btn-title">Quiz</span>
+                        <span class="btn-sub">Test your knowledge</span>
+                    </button>
+                    <button type="button" class="button-home" data-mode="essay" id="button-essay2">
+                        <span class="btn-icon">✒️</span>
+                        <span class="btn-title">Essay</span>
+                        <span class="btn-sub">Write &amp; get feedback</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK SELECT (shared by quiz & essay) -->
+        <section id="mainbox-week-screen" class="screen card" style="display: none;">
+            <h2 id="week-select-title">Choose a week</h2>
+            <p class="muted" id="week-select-subtitle">Each week unlocks a new, randomly assigned topic.</p>
+            <div id="week-select-buttons">
+                <button type="button" class="button-week" data-week="1">
+                    <span class="week-num">Week 1</span>
+                    <span class="week-hint" id="week-hint-1">7 topics</span>
+                </button>
+                <button type="button" class="button-week" data-week="2">
+                    <span class="week-num">Week 2</span>
+                    <span class="week-hint" id="week-hint-2">5 topics</span>
+                </button>
+                <button type="button" class="button-week" data-week="3">
+                    <span class="week-num">Week 3</span>
+                    <span class="week-hint" id="week-hint-3">5 topics</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- NAME ENTRY (shared) -->
+        <section id="mainbox-start-screen" class="screen card" style="display: none;">
+            <p id="p-YN">Your name</p>
+            <div id="button-input-div">
+                <input type="text" placeholder="Please enter your name..." id="input-user-name" autocomplete="off">
+                <button type="button" class="btn-primary" id="button-start">Start</button>
+            </div>
+        </section>
+
+        <!-- INFO -->
+        <section id="mainbox-info-screen" class="screen card" style="display: none;">
+            <div id="div-creaters">
+                <h2 id="h2-creaters">Created by</h2>
+            </div>
+
+            <div class="nameinfo-row">
+                <div class="imgname"><img src="photo/adam.png" alt="Adam"></div>
+                <div class="textname">
+                    <h3 class="name-for-info">Adam</h3>
+                    <p class="p-for-info">Frontend Developer</p>
+                </div>
+            </div>
+
+            <div class="nameinfo-row">
+                <div class="imgname"><img src="photo/sabina.png" alt="Sabina"></div>
+                <div class="textname">
+                    <h3 class="name-for-info">Sabina</h3>
+                    <p class="p-for-info">UI/UX &amp; CSS Designer</p>
+                </div>
+            </div>
+
+            <div class="nameinfo-row">
+                <div class="imgname"><img src="photo/roza.png" alt="Roza"></div>
+                <div class="textname">
+                    <h3 class="name-for-info">Roza</h3>
+                    <p class="p-for-info">Content &amp; Quiz Creator</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESSAY WRITING -->
+        <section id="mainbox-essey-test-screen" class="screen" style="display: none;">
+            <div id="topic-test" class="card">
+
+                <div id="div-topic-text">
+                    <p id="p-topic-text"></p>
+                </div>
+
+                <div id="div-topic-input">
+                    <p id="lang-warning" style="display: none;">⚠ Please write your essay in English.</p>
+                    <textarea placeholder="Please enter your text..." id="input-topic-input"></textarea>
+                    <p id="essay-char-counter"></p>
+                </div>
+
+                <div id="div-button-save-and-exit">
+                    <button type="button" class="btn-primary" id="button-save-and-exit">
+                        <span id="text-save-and-exit">Submit essay</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESSAY RESULT (incl. AI-style evaluation) -->
+        <section id="mainbox-essay-result-screen" class="screen" style="display: none;"></section>
+
+        <!-- QUIZ -->
+        <section id="mainbox-questions-screen" class="screen" style="display: none;">
+            <div id="div-title-question" class="card">
+                <p id="text-q">Question <span id="q-current">1</span> / <span id="q-total">10</span></p>
+                <div id="div-timer">⏱ <span id="timer-answers">30</span>s</div>
+                <div id="div-live-score">Score: <span id="live-score">0</span></div>
+                <h2 id="text-question">text questions</h2>
+            </div>
+
+            <div id="div-options-answers"><!--Answer options--></div>
+            <p id="quiz-feedback" aria-live="polite"></p>
+        </section>
+
+        <!-- QUIZ RESULT -->
+        <section id="mainbox-result-answer-screen" class="screen" style="display: none;">
+            <div id="title-text-result" class="card">
+                <h2 id="h2-tr">Quiz result</h2>
+                <p id="p-result-answers"></p>
+                <div id="quiz-rating"></div>
+                <h3 id="h3-ia">Review your answers</h3>
+            </div>
+            <div id="div-incorrect-answers"><!--answers review--></div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

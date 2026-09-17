@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'Font';
-    src: url('font-famile/LaCoffeeDemo-BWD3V.otf') format('opentype');
+    src: url('LaCoffeeDemo-BWD3V.otf') format('opentype'); /* убрано 'font-famile/' */
     font-weight: normal;
     font-style: normal;
     font-display: swap;

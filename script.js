@@ -158,7 +158,7 @@ function resolveEssayTopic(rawTopic) {
   return rawTopic;
 }
 
-const QUIZ_QUESTIONS_PER_SESSION = 10;
+const QUIZ_QUESTIONS_PER_SESSION = 30;
 const QUESTION_TIME_SECONDS = 30;
 const FEEDBACK_DELAY_MS = 1300;
 const ESSAY_TOTAL_MINUTES = 30;

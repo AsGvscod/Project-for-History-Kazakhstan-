@@ -18,11 +18,11 @@
 
     <header id="hat">
         <button type="button" class="icon-btn" id="button-back" style="display: none;" aria-label="Back">
-            <span>&larr; Back</span>
+            <span>&larr; back</span>
         </button>
 
         <button type="button" class="icon-btn" id="button-info2" aria-label="Info">
-            <span>Info</span>
+            <span>info</span>
         </button>
 
         <div id="div-topic-timer" style="display: none;">
@@ -30,7 +30,7 @@
         </div>
 
         <button type="button" class="icon-btn" id="button-exit" style="display: none;" aria-label="Exit">
-            <span>Exit</span>
+            <span>exit</span>
         </button>
     </header>
 
@@ -39,21 +39,19 @@
         <!-- HOME -->
         <section id="mainbox-home-screen" class="screen" style="display: grid;">
             <div class="hero-panel">
-                <p class="eyebrow">History of Kazakhstan</p>
+                <p class="eyebrow">history of kazakhstan</p>
                 <h1>the steppe</h1>
                 <span class="hero-divider"></span>
-                <p class="subtitle">Interactive quizzes and essays, week by week</p>
+                <p class="subtitle">interactive quizzes and essays, week by week</p>
 
                 <div id="home-button">
                     <button type="button" class="button-home" data-mode="quiz" id="button-test2">
-                        <span class="btn-icon">🧭</span>
-                        <span class="btn-title">Quiz</span>
-                        <span class="btn-sub">Test your knowledge</span>
+                        <span class="btn-title">quiz</span>
+                        <span class="btn-sub">test your knowledge</span>
                     </button>
                     <button type="button" class="button-home" data-mode="essay" id="button-essay2">
-                        <span class="btn-icon">✒️</span>
-                        <span class="btn-title">Essay</span>
-                        <span class="btn-sub">Write &amp; get feedback</span>
+                        <span class="btn-title">essay</span>
+                        <span class="btn-sub">write &amp; get feedback</span>
                     </button>
                 </div>
             </div>
@@ -61,19 +59,19 @@
 
         <!-- WEEK SELECT (shared by quiz & essay) -->
         <section id="mainbox-week-screen" class="screen card" style="display: none;">
-            <h2 id="week-select-title">Choose a week</h2>
-            <p class="muted" id="week-select-subtitle">Each week unlocks a new, randomly assigned topic.</p>
+            <h2 id="week-select-title">choose a week</h2>
+            <p class="muted" id="week-select-subtitle">each week unlocks a new, randomly assigned topic.</p>
             <div id="week-select-buttons">
                 <button type="button" class="button-week" data-week="1">
-                    <span class="week-num">Week 1</span>
+                    <span class="week-num">week 1</span>
                     <span class="week-hint" id="week-hint-1">7 topics</span>
                 </button>
                 <button type="button" class="button-week" data-week="2">
-                    <span class="week-num">Week 2</span>
+                    <span class="week-num">week 2</span>
                     <span class="week-hint" id="week-hint-2">5 topics</span>
                 </button>
                 <button type="button" class="button-week" data-week="3">
-                    <span class="week-num">Week 3</span>
+                    <span class="week-num">week 3</span>
                     <span class="week-hint" id="week-hint-3">5 topics</span>
                 </button>
             </div>
@@ -81,24 +79,24 @@
 
         <!-- NAME ENTRY (shared) -->
         <section id="mainbox-start-screen" class="screen card" style="display: none;">
-            <p id="p-YN">Your name</p>
+            <p id="p-YN">your name</p>
             <div id="button-input-div">
-                <input type="text" placeholder="Please enter your name..." id="input-user-name" autocomplete="off">
-                <button type="button" class="btn-primary" id="button-start">Start</button>
+                <input type="text" placeholder="please enter your name..." id="input-user-name" autocomplete="off">
+                <button type="button" class="btn-primary" id="button-start">start</button>
             </div>
         </section>
 
         <!-- INFO -->
         <section id="mainbox-info-screen" class="screen card" style="display: none;">
             <div id="div-creaters">
-                <h2 id="h2-creaters">Created by</h2>
+                <h2 id="h2-creaters">created by</h2>
             </div>
 
             <div class="nameinfo-row">
                 <div class="imgname"><img src="adam.png" alt="Adam"></div>
                 <div class="textname">
                     <h3 class="name-for-info">Adam</h3>
-                    <p class="p-for-info">Frontend Developer</p>
+                    <p class="p-for-info">frontend developer</p>
                 </div>
             </div>
 
@@ -106,7 +104,7 @@
                 <div class="imgname"><img src="sabina.png" alt="Sabina"></div>
                 <div class="textname">
                     <h3 class="name-for-info">Sabina</h3>
-                    <p class="p-for-info">UI/UX &amp; CSS Designer</p>
+                    <p class="p-for-info">ui/ux &amp; css designer</p>
                 </div>
             </div>
 
@@ -114,9 +112,8 @@
                 <div class="imgname"><img src="roza.png" alt="Roza"></div>
                 <div class="textname">
                     <h3 class="name-for-info">Roza</h3>
-                    <p class="p-for-info">Content &amp; Quiz Creator</p>
+                    <p class="p-for-info">content &amp; quiz creator</p>
                 </div>
-            </div>
             </div>
         </section>
 
@@ -129,14 +126,14 @@
                 </div>
 
                 <div id="div-topic-input">
-                    <p id="lang-warning" style="display: none;">⚠ Please write your essay in English.</p>
+                    <p id="lang-warning" style="display: none;">please write your essay in english.</p>
                     <textarea placeholder="Please enter your text..." id="input-topic-input"></textarea>
                     <p id="essay-char-counter"></p>
                 </div>
 
                 <div id="div-button-save-and-exit">
                     <button type="button" class="btn-primary" id="button-save-and-exit">
-                        <span id="text-save-and-exit">Submit essay</span>
+                        <span id="text-save-and-exit">submit essay</span>
                     </button>
                 </div>
             </div>
@@ -148,9 +145,9 @@
         <!-- QUIZ -->
         <section id="mainbox-questions-screen" class="screen" style="display: none;">
             <div id="div-title-question" class="card">
-                <p id="text-q">Question <span id="q-current">1</span> / <span id="q-total">10</span></p>
-                <div id="div-timer">⏱ <span id="timer-answers">30</span>s</div>
-                <div id="div-live-score">Score: <span id="live-score">0</span></div>
+                <p id="text-q">question <span id="q-current">1</span> / <span id="q-total">10</span></p>
+                <div id="div-timer"><span id="timer-answers">30</span>s</div>
+                <div id="div-live-score">score: <span id="live-score">0</span></div>
                 <h2 id="text-question">text questions</h2>
             </div>
 
@@ -161,10 +158,10 @@
         <!-- QUIZ RESULT -->
         <section id="mainbox-result-answer-screen" class="screen" style="display: none;">
             <div id="title-text-result" class="card">
-                <h2 id="h2-tr">Quiz result</h2>
+                <h2 id="h2-tr">quiz result</h2>
                 <p id="p-result-answers"></p>
                 <div id="quiz-rating"></div>
-                <h3 id="h3-ia">Review your answers</h3>
+                <h3 id="h3-ia">review your answers</h3>
             </div>
             <div id="div-incorrect-answers"><!--answers review--></div>
         </section>

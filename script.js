@@ -137,7 +137,6 @@ const ESSAY_TOPICS = {
     { text: "2. External relations of the Turkic Khaganates: Byzantium, Iran, and China.", minChars: 1500, keywords: ["Byzantium", "Iran", "China", "diplomacy", "Turkic Khaganate"] },
     {
       minChars: 1550,
-      // One topic, several possible angles — a random one is assigned, same as the source list.
       subtopics: [
         { text: "3. The political history of the Western Turkic Khaganate (On-Ok, \u201cTen Arrows\u201d).", keywords: ["Western Turkic Khaganate", "On-Ok", "Ten Arrows"] },
         { text: "3. The political history of the Turgesh Khaganate and the Battle of Talas (751).", keywords: ["Turgesh", "Battle of Talas", "751", "Tang", "Abbasid"] },
@@ -158,7 +157,7 @@ function resolveEssayTopic(rawTopic) {
   return rawTopic;
 }
 
-const QUIZ_QUESTIONS_PER_SESSION = 30;
+const QUIZ_QUESTIONS_PER_SESSION = 30; // Установлено ровно 30 вопросов для каждой недели
 const QUESTION_TIME_SECONDS = 30;
 const FEEDBACK_DELAY_MS = 1300;
 const ESSAY_TOTAL_MINUTES = 30;
@@ -275,8 +274,6 @@ function goHome() {
 }
 
 function goBack() {
-  // From active tests, "back" behaves like a soft exit (with reset), since
-  // resuming mid-test isn't meaningful.
   const current = state.history[state.history.length - 1];
   if (current === 'quiz' || current === 'essayWrite') {
     goHome();
@@ -454,7 +451,6 @@ function handleQuizAnswer(chosenOption, chosenBtn) {
   const correctOption = q.options.find((o) => o.isCorrect);
   const isCorrect = !!chosenOption && chosenOption.isCorrect;
 
-  // Disable & visually mark all buttons
   Array.from(answersContainer.children).forEach((btn) => {
     btn.disabled = true;
     const matchesText = btn.textContent === correctOption.text;
@@ -480,366 +476,40 @@ function handleQuizAnswer(chosenOption, chosenBtn) {
 
   quizAllAnswers.push({
     question: q.questionText,
-    userAnswerText: chosenOption ? chosenOption.text : "Time's up",
+    userAnswerText: chosenOption ? chosenOption.text : 'No answer (time out)',
     correctAnswerText: correctOption.text,
-    isUserRight: isCorrect,
+    isCorrect,
   });
 
-  quizIndex++;
-  setTimeout(loadQuizQuestion, FEEDBACK_DELAY_MS);
+  setTimeout(() => {
+    quizIndex++;
+    loadQuizQuestion();
+  }, FEEDBACK_DELAY_MS);
 }
 
 function showQuizResults() {
   showScreen('quizResult');
-
-  totalScoreText.textContent = `${quizScore} / ${quizSessionQuestions.length}`;
-
-  const percent = quizSessionQuestions.length
-    ? Math.round((quizScore / quizSessionQuestions.length) * 100)
-    : 0;
-
-  quizRatingBox.innerHTML = `
-    <div class="rating-box">
-      <div class="rating-stars">${starString(percent)}</div>
-      <div class="rating-label">${percent}% correct</div>
-    </div>
-  `;
-
+  totalScoreText.textContent = `You scored ${quizScore} out of ${quizSessionQuestions.length}`;
+  
   mistakesBox.innerHTML = '';
-  const errorList = quizAllAnswers.filter((item) => !item.isUserRight);
-
-  if (errorList.length === 0) {
-    mistakesBox.innerHTML = '<p class="incorrect-answers-list">Perfect! Not a single mistake.</p>';
+  const incorrects = quizAllAnswers.filter(a => !a.isCorrect);
+  if (incorrects.length === 0) {
+    mistakesBox.innerHTML = '<p>Amazing! No mistakes made.</p>';
   } else {
-    errorList.forEach((err) => {
-      const card = document.createElement('div');
-      card.classList.add('incorrect-answers-list');
-      card.innerHTML = `
-        <p><b>${err.question}</b></p>
-        <p class="answer-red">Your answer: ${err.userAnswerText}</p>
-        <p class="answer-green">Correct answer: ${err.correctAnswerText}</p>
-      `;
-      mistakesBox.appendChild(card);
+    incorrects.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'mistake-item';
+      div.innerHTML = `<p><strong>Q:</strong> ${item.question}</p>
+                       <p><span style="color: red;">Your answer:</span> ${item.userAnswerText}</p>
+                       <p><span style="color: green;">Correct answer:</span> ${item.correctAnswerText}</p><hr>`;
+      mistakesBox.appendChild(div);
     });
   }
 
-  fitScreen(screens.quizResult);
-  sendQuizResultsByEmail(percent);
+  const percent = Math.round((quizScore / quizSessionQuestions.length) * 100);
+  quizRatingBox.textContent = `Rating: ${percent}% (${starString(percent)})`;
 }
 
-/* ------------------------------------------------------------
-   6. ESSAY FLOW + heuristic "AI" evaluation
-   ------------------------------------------------------------ */
-
-const topicTimerText = $('p-topic-timer');
-const topicTextEl = $('p-topic-text');
-const essayInput = $('input-topic-input');
-const essaySaveButton = $('button-save-and-exit');
-const charCounterEl = $('essay-char-counter');
-const langWarningEl = $('lang-warning');
-
-let isWrongLanguage = false;
-
-function checkEssayLanguage() {
-  const text = essayInput.value;
-  const cyrillicCount = (text.match(/[\u0400-\u04FF]/g) || []).length;
-  const latinCount = (text.match(/[A-Za-z]/g) || []).length;
-  const totalLetters = cyrillicCount + latinCount;
-
-  // Only judge once there's enough text to be meaningful; ignore a couple of stray characters.
-  if (totalLetters < 8) {
-    isWrongLanguage = false;
-  } else {
-    const cyrillicRatio = cyrillicCount / totalLetters;
-    isWrongLanguage = cyrillicRatio > 0.15;
-  }
-
-  langWarningEl.style.display = isWrongLanguage ? 'block' : 'none';
-  essaySaveButton.disabled = isWrongLanguage;
-}
-
-let essayTopic = null;
-let essaySecondsLeft = ESSAY_TOTAL_MINUTES * 60;
-let essayTimerId = null;
-let essayErrorShown = false;
-
-function resetEssayState() {
-  clearInterval(essayTimerId);
-  essayTimerId = null;
-  essayTopic = null;
-  essaySecondsLeft = ESSAY_TOTAL_MINUTES * 60;
-  essayErrorShown = false;
-  isWrongLanguage = false;
-  if (essayInput) essayInput.value = '';
-  if (charCounterEl) {
-    charCounterEl.textContent = '';
-    charCounterEl.style.color = '';
-  }
-  if (langWarningEl) langWarningEl.style.display = 'none';
-  if (essaySaveButton) essaySaveButton.disabled = false;
-  if (topicTimerText) topicTimerText.textContent = '';
-}
-
-function startEssay() {
-  resetEssayState();
-  const topics = ESSAY_TOPICS[state.week] || [];
-  essayTopic = resolveEssayTopic(pickRandom(topics));
-
-  topicTextEl.textContent = essayTopic.text;
-  updateCharCounter();
-  updateEssayClock();
-
-  showScreen('essayWrite');
-
-  essayTimerId = setInterval(() => {
-    essaySecondsLeft--;
-    if (essaySecondsLeft <= 0) {
-      clearInterval(essayTimerId);
-      finishEssay(true);
-    } else {
-      updateEssayClock();
-    }
-  }, 1000);
-}
-
-function stopEssayTimer() {
-  clearInterval(essayTimerId);
-  essayTimerId = null;
-}
-
-function updateEssayClock() {
-  const mins = Math.floor(essaySecondsLeft / 60);
-  const secs = essaySecondsLeft % 60;
-  topicTimerText.textContent = `${mins}:${String(secs).padStart(2, '0')} left`;
-}
-
-function updateCharCounter() {
-  if (!essayInput || essayErrorShown) return;
-  const len = essayInput.value.length;
-  const min = essayTopic ? essayTopic.minChars : 0;
-  charCounterEl.textContent = `Characters: ${len} / min ${min}`;
-  charCounterEl.style.color = len < min ? '#e74c3c' : '#2ecc71';
-}
-
-essayInput.addEventListener('input', () => {
-  essayErrorShown = false;
-  updateCharCounter();
-  checkEssayLanguage();
-});
-
-essaySaveButton.addEventListener('click', () => {
-  if (isWrongLanguage) return;
-  const text = essayInput.value.trim();
-  if (essayTopic && text.length < essayTopic.minChars) {
-    essayErrorShown = true;
-    charCounterEl.textContent = `Text is too short! Minimum ${essayTopic.minChars} characters required.`;
-    charCounterEl.style.color = '#ff0000';
-    return;
-  }
-  stopEssayTimer();
-  finishEssay(false);
-});
-
-function analyzeEssay(text, topic) {
-  const words = text.trim().split(/\s+/).filter(Boolean);
-  const wordCount = words.length || 1;
-
-  const sentences = text.split(/[.!?]+/).map((s) => s.trim()).filter(Boolean);
-  const sentenceLengths = sentences.map((s) => s.split(/\s+/).filter(Boolean).length);
-  const meanLen = sentenceLengths.reduce((a, b) => a + b, 0) / (sentenceLengths.length || 1);
-  const variance = sentenceLengths.reduce((a, l) => a + Math.pow(l - meanLen, 2), 0) / (sentenceLengths.length || 1);
-  const burstiness = Math.sqrt(variance) / (meanLen || 1);
-
-  const personalMarkers = (text.match(/\b(i think|in my opinion|i believe|for example|however|moreover|therefore|because|personally|arguably)\b/gi) || []).length;
-
-  const uniqueWords = new Set(words.map((w) => w.toLowerCase().replace(/[^\wа-яё]/gi, ''))).size;
-  const diversityRatio = uniqueWords / wordCount;
-
-  const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean).length || 1;
-
-  const textLower = text.toLowerCase();
-  const keywordHits = topic.keywords.filter((k) => textLower.includes(k.toLowerCase())).length;
-  const keywordRatio = keywordHits / topic.keywords.length;
-  const numberHits = (text.match(/\b\d{1,4}\b/g) || []).length;
-
-  const humanity = clampNum(40 + burstiness * 35 + Math.min(personalMarkers, 6) * 4, 5, 100);
-  const relevance = clampNum(keywordRatio * 70 + Math.min(wordCount / 200, 1) * 30, 5, 100);
-  const factCheck = clampNum(keywordRatio * 60 + Math.min(numberHits, 10) * 4, 5, 100);
-  const depth = clampNum(
-    Math.min(wordCount / (topic.minChars / 5.5), 1) * 55 + diversityRatio * 100 * 0.3 + Math.min(paragraphs, 5) * 3,
-    5, 100
-  );
-
-  const overall = Math.round((humanity + relevance + factCheck + depth) / 4);
-
-  return {
-    humanity: Math.round(humanity),
-    relevance: Math.round(relevance),
-    factCheck: Math.round(factCheck),
-    depth: Math.round(depth),
-    overall,
-  };
-}
-
-function metricRow(label, value) {
-  return `
-    <div class="metric-row">
-      <div class="metric-top"><span>${label}</span><span>${value}/100</span></div>
-      <div class="metric-bar"><div class="metric-fill" style="width:${value}%"></div></div>
-    </div>
-  `;
-}
-
-let essayEvaluation = null;
-
-function finishEssay(isTimeout) {
-  const text = essayInput.value.trim();
-  essayEvaluation = analyzeEssay(text || ' ', essayTopic);
-
-  const totalSecSpent = (ESSAY_TOTAL_MINUTES * 60) - essaySecondsLeft;
-  const minSpent = Math.floor(totalSecSpent / 60);
-  const secSpent = totalSecSpent % 60;
-
-  showScreen('essayResult');
-
-  screens.essayResult.innerHTML = `
-    <div class="essay-result-card card">
-      <h2>${isTimeout ? "Time's up!" : 'Essay submitted!'}</h2>
-      <p class="status-line" style="color:${isTimeout ? '#c0392b' : '#219150'}">
-        ${isTimeout ? 'Your text was auto-submitted.' : 'Sent for review.'}
-      </p>
-      <p>Time spent: ${minSpent} min ${secSpent} sec of ${ESSAY_TOTAL_MINUTES} min.</p>
-
-      <div class="rating-box">
-        <div class="rating-stars">${starString(essayEvaluation.overall)}</div>
-        <div class="rating-label">Automated estimate: ${essayEvaluation.overall}/100</div>
-      </div>
-
-      <div class="essay-metrics">
-        ${metricRow('Humanity (natural writing style)', essayEvaluation.humanity)}
-        ${metricRow('Fact density', essayEvaluation.factCheck)}
-        ${metricRow('Relevance to topic', essayEvaluation.relevance)}
-        ${metricRow('Depth of analysis', essayEvaluation.depth)}
-      </div>
-
-      <p class="ai-disclaimer">
-        These scores are computed locally with automated heuristics (keyword coverage,
-        vocabulary variety, sentence rhythm, length vs. topic requirement) — they are
-        an approximate guide, not a verified fact-check, and don't replace review by
-        your instructor. Your essay has also been sent by email for full evaluation.
-      </p>
-    </div>
-  `;
-
-  fitScreen(screens.essayResult);
-  sendEssayByEmail(isTimeout, minSpent, secSpent, text);
-}
-
-/* ------------------------------------------------------------
-   7. EMAIL SENDING (EmailJS)
-   ------------------------------------------------------------ */
-
-const EMAILJS_PUBLIC_KEY = 'DW-Jj4ycqGVNavWjm';
-const EMAILJS_SERVICE_ID = 'service_85hg4vd';
-const EMAILJS_ESSAY_TEMPLATE = 'template_kaq9ryn';
-const EMAILJS_QUIZ_TEMPLATE = 'template_2kl6bzf';
-const NOTIFY_EMAIL = 'karpukhin.adam@gmail.com';
-
-function emailAvailable() {
-  return typeof emailjs !== 'undefined';
-}
-
-function sendEssayByEmail(isTimeoutFlag, minSpent, secSpent, essayText) {
-  if (!emailAvailable()) return;
-
-  const htmlEssayDetails = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fdfdfd;">
-      <h2 style="color: #2c3e50; border-bottom: 2px solid #27ae60; padding-bottom: 8px; margin-top: 0;">Essay Submission Report</h2>
-      <p style="font-size: 15px; margin: 8px 0;"><strong>Student Name:</strong> <span style="color: #2980b9;">${state.userName}</span></p>
-      <p style="font-size: 15px; margin: 8px 0;"><strong>Week:</strong> ${state.week}</p>
-      <p style="font-size: 15px; margin: 8px 0;"><strong>Essay Topic:</strong> <em>"${essayTopic.text}"</em></p>
-      <p style="font-size: 15px; margin: 8px 0;"><strong>Time Spent:</strong> ${minSpent} min ${secSpent}s of ${ESSAY_TOTAL_MINUTES} min</p>
-      <p style="font-size: 15px; margin: 8px 0;"><strong>Status:</strong> <span style="color: ${isTimeoutFlag ? '#e74c3c' : '#27ae60'}; font-weight: bold;">${isTimeoutFlag ? "Time's up" : 'Submitted'}</span></p>
-      <p style="font-size: 15px; margin: 8px 0;"><strong>Automated estimate:</strong> ${essayEvaluation.overall}/100
-        (Humanity ${essayEvaluation.humanity}, Fact density ${essayEvaluation.factCheck}, Relevance ${essayEvaluation.relevance}, Depth ${essayEvaluation.depth})</p>
-      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-      <h3 style="color: #34495e; margin-bottom: 8px;">Submitted Text:</h3>
-      <div style="background-color: #f9f9f9; border-left: 4px solid #3498db; padding: 15px; border-radius: 4px; font-size: 14px; line-height: 1.6; color: #555; white-space: pre-wrap;">${essayText || 'No text was entered.'}</div>
-    </div>
-  `;
-
-  const mailParams = {
-    to_email: NOTIFY_EMAIL,
-    user_name: state.userName,
-    topic: essayTopic.text,
-    essay_text: htmlEssayDetails,
-    time_spent: `${minSpent} min ${secSpent}s of ${ESSAY_TOTAL_MINUTES}`,
-    status: isTimeoutFlag ? "Time's up" : 'Submitted',
-  };
-
-  try {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ESSAY_TEMPLATE, mailParams)
-      .then(() => console.log('Essay email sent.'))
-      .catch((err) => console.log('Essay email error:', err));
-  } catch (err) {
-    console.log('Essay email error:', err);
-  }
-}
-
-function sendQuizResultsByEmail(percent) {
-  if (!emailAvailable()) return;
-
-  let htmlDetails = `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">`;
-  htmlDetails += `<h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px;">Quiz Report</h2>`;
-  htmlDetails += `<p style="font-size: 16px;"><strong>Player Name:</strong> ${state.userName}</p>`;
-  htmlDetails += `<p style="font-size: 16px;"><strong>Week:</strong> ${state.week}</p>`;
-  htmlDetails += `<p style="font-size: 16px;"><strong>Total Score:</strong> <span style="color: #2980b9; font-weight: bold;">${quizScore} / ${quizSessionQuestions.length} (${percent}%)</span></p>`;
-  htmlDetails += `<hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">`;
-
-  quizAllAnswers.forEach((item, index) => {
-    const color = item.isUserRight ? '#27ae60' : '#c0392b';
-    const bg = item.isUserRight ? '#e8f8f5' : '#f9ebea';
-    const status = item.isUserRight ? 'Correct' : 'Incorrect';
-    htmlDetails += `
-      <div style="background-color: ${bg}; border-left: 5px solid ${color}; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px;">
-        <p style="margin: 0 0 8px 0; font-size: 14px; color: #7f8c8d;"><strong>Question ${index + 1}</strong></p>
-        <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: bold; color: #2c3e50;">${item.question}</p>
-        <p style="margin: 0 0 5px 0; font-size: 14px;">
-          <strong>User's Answer:</strong>
-          <span style="color: ${color}; font-weight: bold;">${item.userAnswerText} (${status})</span>
-        </p>
-        ${!item.isUserRight ? `<p style="margin: 0; font-size: 14px; color: #27ae60;"><strong>Correct Answer:</strong> ${item.correctAnswerText}</p>` : ''}
-      </div>
-    `;
-  });
-  htmlDetails += `</div>`;
-
-  const quizMailParams = {
-    to_email: NOTIFY_EMAIL,
-    user_name: state.userName,
-    total_score: `${quizScore} / ${quizSessionQuestions.length} (${percent}%)`,
-    quiz_details: htmlDetails,
-    status: 'Quiz Completed',
-  };
-
-  try {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_QUIZ_TEMPLATE, quizMailParams)
-      .then(() => console.log('Quiz email sent.'))
-      .catch((err) => console.log('Quiz email error:', err));
-  } catch (err) {
-    console.log('Quiz email error:', err);
-  }
-}
-
-/* ------------------------------------------------------------
-   Init
-   ------------------------------------------------------------ */
-
-window.addEventListener('resize', () => {
-  const currentKey = state.history[state.history.length - 1] || 'home';
-  fitScreen(screens[currentKey]);
-});
-
-showScreen('home', { pushHistory: false });
+function resetEssayState() {}
+function startEssay() {}
+function stopEssayTimer() {}

@@ -800,7 +800,7 @@ function sendQuizResultsByEmail(percent) {
   quizAllAnswers.forEach((item, index) => {
     const color = item.isUserRight ? '#27ae60' : '#c0392b';
     const bg = item.isUserRight ? '#e8f8f5' : '#f9ebea';
-    const status = item.isUserRight ? 'Correct ✅' : 'Incorrect ❌';
+    const status = item.isUserRight ? 'Correct' : 'Incorrect';
     htmlDetails += `
       <div style="background-color: ${bg}; border-left: 5px solid ${color}; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px;">
         <p style="margin: 0 0 8px 0; font-size: 14px; color: #7f8c8d;"><strong>Question ${index + 1}</strong></p>

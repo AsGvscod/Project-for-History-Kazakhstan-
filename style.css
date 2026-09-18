@@ -121,7 +121,8 @@ textarea:focus-visible {
     color: var(--brown-darkest);
     font-size: clamp(0.9rem, 1.1vw, 1.05rem);
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
     transition: transform 0.2s var(--ease), background-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
     box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
 }
@@ -149,13 +150,15 @@ textarea:focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.1rem;
     border-radius: var(--radius-sm);
     border: 0.08rem solid var(--brown-mid);
     background: rgba(196, 164, 130, 0.9);
     color: var(--brown-darkest);
     font-size: clamp(0.75rem, 1vw, 0.95rem);
     font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
     transition: all 0.2s var(--ease);
     backdrop-filter: blur(4px);
 }
@@ -280,7 +283,7 @@ textarea:focus-visible {
     margin: 0 0 0.6rem;
     font-size: clamp(0.7rem, 1vw, 0.85rem);
     letter-spacing: 0.35em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--tan);
     text-shadow: 0.05rem 0.05rem 0.4rem rgba(0, 0, 0, 0.7);
 }
@@ -321,36 +324,35 @@ textarea:focus-visible {
     align-items: center;
     gap: 0.35rem;
     width: clamp(9.5rem, 17vw, 12.5rem);
-    padding: 1.5rem 1.1rem;
-    border-radius: var(--radius-md);
-    border: 0.1rem solid var(--brown-mid);
-    background: linear-gradient(160deg, rgba(234, 210, 184, 0.96), rgba(196, 164, 130, 0.92));
+    padding: 1.6rem 1.1rem;
+    border-radius: var(--radius-sm);
+    border: 0.06rem solid rgba(107, 66, 38, 0.55);
+    background: rgba(234, 210, 184, 0.94);
     color: var(--brown-darkest);
-    transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
     box-shadow: var(--shadow-soft);
 }
 
 .button-home:hover {
-    background: linear-gradient(160deg, var(--brown-mid), var(--brown-dark));
+    background: var(--brown-darkest);
+    border-color: var(--tan);
     color: var(--cream-light);
-    transform: translateY(-0.3rem) scale(1.05);
+    transform: translateY(-0.25rem);
     box-shadow: var(--shadow-hover);
-}
-
-.btn-icon {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
-    line-height: 1;
-    margin-bottom: 0.15rem;
 }
 
 .btn-title {
     font-size: clamp(1.15rem, 2.1vw, 1.5rem);
-    font-weight: 700;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: lowercase;
 }
 
 .btn-sub {
-    font-size: clamp(0.68rem, 1vw, 0.82rem);
-    opacity: 0.85;
+    font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    opacity: 0.75;
 }
 
 /* ---------- Week select screen ---------- */
@@ -358,6 +360,8 @@ textarea:focus-visible {
     margin: 0;
     color: var(--brown-darkest);
     font-size: clamp(1.4rem, 2.6vw, 2rem);
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
 }
 
 #week-select-buttons {
@@ -377,6 +381,8 @@ textarea:focus-visible {
     background: var(--cream-light);
     color: var(--brown-darkest);
     font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
     transition: all 0.2s var(--ease);
 }
 
@@ -400,6 +406,8 @@ textarea:focus-visible {
     margin: 0;
     font-size: clamp(1.3rem, 2.4vw, 1.8rem);
     color: var(--brown-darkest);
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
 }
 
 #button-input-div {

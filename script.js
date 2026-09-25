@@ -113,11 +113,38 @@ const QUIZ_BANKS = {
     { questionText: "Who is the author of the work “Kutadgu Bilig” (“The Wisdom of Royal Glory”)?", variants: ["Mahmud al-Kashgari", "Yusuf Balasaguni", "Al-Farabi", "Ahmed Yugnaki"], rightAnswerIndex: 1 },
     { questionText: "What was the name of Mahmud al-Kashgari’s work devoted to Turkic languages and dialects?", variants: ["“Kutadgu Bilig”", "“Diwan-i Hikmet”", "“Dīwān Lughāt al-Turk”", "“Tarikh-i Rashidi”"], rightAnswerIndex: 2 }
   ],
-  // Placeholder example data — replace with the real week 4 bank once provided.
+  // Week 4 — "The Great Steppe and the Golden Horde"
   4: [
-    { questionText: "[Example] In what year did Kazakhstan declare independence?", variants: ["1989", "1991", "1993", "1995"], rightAnswerIndex: 1 },
-    { questionText: "[Example] What is the capital of Kazakhstan?", variants: ["Almaty", "Shymkent", "Astana", "Karaganda"], rightAnswerIndex: 2 },
-    { questionText: "[Example] Which sea does Kazakhstan border?", variants: ["Black Sea", "Caspian Sea", "Baltic Sea", "Red Sea"], rightAnswerIndex: 1 },
+    { questionText: "Who founded the Golden Horde?", variants: ["Genghis Khan", "Batu Khan", "Timur", "Abulkhair Khan"], rightAnswerIndex: 1 },
+    { questionText: "In which century was the Golden Horde established?", variants: ["11th century", "12th century", "13th century", "15th century"], rightAnswerIndex: 2 },
+    { questionText: "Who was Batu Khan?", variants: ["Son of Genghis Khan", "Grandson of Genghis Khan", "Brother of Timur", "Ruler of the Karakhanid state"], rightAnswerIndex: 1 },
+    { questionText: "What was the original name of the Golden Horde?", variants: ["Ulus of Jochi", "Chagatai Khanate", "Ilkhanate", "Turkic Khaganate"], rightAnswerIndex: 0 },
+    { questionText: "Which son of Genghis Khan inherited the western part of the Mongol Empire?", variants: ["Chagatai", "Ogedei", "Jochi", "Tolui"], rightAnswerIndex: 2 },
+    { questionText: "What was the main territory of the Golden Horde?", variants: ["Western Europe", "Eastern Asia", "The Great Steppe and Eastern Europe", "India and Persia"], rightAnswerIndex: 2 },
+    { questionText: "What was the capital of the Golden Horde under Batu Khan?", variants: ["Sarai-Batu", "Samarkand", "Otrar", "Turkistan"], rightAnswerIndex: 0 },
+    { questionText: "Where was Sarai-Batu located?", variants: ["Near the Volga River", "Near the Irtysh River", "Near the Amu Darya", "Near Lake Balkhash"], rightAnswerIndex: 0 },
+    { questionText: "Which river became an important economic and political center of the Golden Horde?", variants: ["Irtysh", "Volga", "Syr Darya", "Chu"], rightAnswerIndex: 1 },
+    { questionText: "What was the main economic activity of the steppe population?", variants: ["Maritime trade", "Nomadic pastoralism", "Mining", "Fishing"], rightAnswerIndex: 1 },
+    { questionText: "Which city became the second major capital of the Golden Horde?", variants: ["Sarai-Batu", "Sarai-Berke", "Balasagun", "Taraz"], rightAnswerIndex: 1 },
+    { questionText: "Which khan is associated with the strengthening and Islamization of the Golden Horde?", variants: ["Batu Khan", "Berke Khan", "Uzbek Khan", "Tokhtamysh"], rightAnswerIndex: 2 },
+    { questionText: "Which religion became dominant in the Golden Horde during the reign of Uzbek Khan?", variants: ["Christianity", "Buddhism", "Islam", "Zoroastrianism"], rightAnswerIndex: 2 },
+    { questionText: "Which khan was one of the first rulers of the Golden Horde to convert to Islam?", variants: ["Berke Khan", "Batu Khan", "Mongke", "Jochi"], rightAnswerIndex: 0 },
+    { questionText: "What was the main purpose of the yam system?", variants: ["Collecting taxes", "Organizing postal and communication routes", "Training soldiers", "Building fortresses"], rightAnswerIndex: 1 },
+    { questionText: "What was the term for a tax or tribute collected by Mongol authorities?", variants: ["Iqta", "Yasak", "Tamga", "Dinar"], rightAnswerIndex: 1 },
+    { questionText: "Which battle in 1240 marked the capture of Kyiv by Batu's forces?", variants: ["Battle of Talas", "Siege of Kyiv", "Battle of Kulikovo", "Battle of Ankara"], rightAnswerIndex: 1 },
+    { questionText: "What was the main political system of the Golden Horde based on?", variants: ["Democracy", "Tribal and military administration", "Parliamentary monarchy", "City-states"], rightAnswerIndex: 1 },
+    { questionText: "What was a \u201culus\u201d?", variants: ["A religious building", "A military weapon", "A territory or domain belonging to a member of the Genghisid dynasty", "A type of tax"], rightAnswerIndex: 2 },
+    { questionText: "Which language increasingly spread among the population of the Golden Horde?", variants: ["Latin", "Old Russian", "Kipchak Turkic", "Chinese"], rightAnswerIndex: 2 },
+    { questionText: "What was one important consequence of Mongol rule for the Great Steppe?", variants: ["Complete disappearance of trade", "Development of long-distance trade routes", "End of nomadic culture", "Isolation from Europe"], rightAnswerIndex: 1 },
+    { questionText: "Which trade route connected the Golden Horde with Central Asia, China and Europe?", variants: ["Spice Route", "Great Silk Road", "Amber Road", "Royal Road"], rightAnswerIndex: 1 },
+    { questionText: "Which city was an important trade center in the eastern part of the Golden Horde?", variants: ["Sarai", "Otrar", "Venice", "Constantinople"], rightAnswerIndex: 1 },
+    { questionText: "What was the relationship between the Golden Horde and Russian principalities?", variants: ["Complete independence from the beginning", "Russian princes often paid tribute to the khan", "Russia ruled the Golden Horde", "They had no contact"], rightAnswerIndex: 1 },
+    { questionText: "Which battle in 1380 became an important victory for the Russian forces against the Golden Horde?", variants: ["Battle of Kulikovo", "Battle of Talas", "Battle of Kalka", "Battle of Ankara"], rightAnswerIndex: 0 },
+    { questionText: "Who was the Golden Horde khan during the Battle of Kulikovo?", variants: ["Batu Khan", "Uzbek Khan", "Mamai", "Berke Khan"], rightAnswerIndex: 2 },
+    { questionText: "Who reunited much of the Golden Horde and invaded Moscow in 1382?", variants: ["Tokhtamysh", "Mamai", "Uzbek Khan", "Edigu"], rightAnswerIndex: 0 },
+    { questionText: "Which Central Asian ruler defeated Tokhtamysh?", variants: ["Babur", "Timur", "Shah Ismail", "Nizam al-Mulk"], rightAnswerIndex: 1 },
+    { questionText: "What was one major reason for the decline of the Golden Horde in the 15th century?", variants: ["Internal political conflicts and fragmentation", "Lack of access to horses", "Disappearance of the Great Steppe", "Complete destruction of trade"], rightAnswerIndex: 0 },
+    { questionText: "Which states emerged from the fragmentation of the Golden Horde?", variants: ["Kazakh Khanate, Crimean Khanate and Kazan Khanate", "Roman Empire and Byzantine Empire", "Seljuk and Ottoman Empires", "Western and Eastern Roman Empires"], rightAnswerIndex: 0 },
   ],
 };
 
@@ -153,11 +180,15 @@ const ESSAY_TOPICS = {
     { text: "4. The Great Silk Road: its role in economy, urbanization, and cultural exchange.", minChars: 1500, keywords: ["Silk Road", "economy", "urbanization", "cultural exchange", "trade"] },
     { text: "5. The Muslim Renaissance in Central Asia and outstanding Turkic scholars.", minChars: 1500, keywords: ["Muslim Renaissance", "Central Asia", "scholars", "al-Farabi", "science"] },
   ],
-  // Placeholder example data — replace with the real week 4 topics once provided.
+  // Week 4 — the Mongol Empire, the Golden Horde, and its successor states
   4: [
-    { text: "1. [Example] The formation of independent Kazakhstan.", minChars: 1000, keywords: ["independence", "1991", "state-building"] },
-    { text: "2. [Example] Kazakhstan's role in the modern world.", minChars: 1000, keywords: ["diplomacy", "economy", "international"] },
-    { text: "3. [Example] Cultural heritage of modern Kazakhstan.", minChars: 1000, keywords: ["culture", "heritage", "identity"] },
+    { text: "1. The creation of the Mongol Empire and its invasions in Central Asia and Kazakhstan.", minChars: 1500, keywords: ["Mongol Empire", "Genghis Khan", "invasion", "Central Asia"] },
+    { text: "2. The Golden Horde (Juchi Ulus): political history, economy, and cultural development.", minChars: 1500, keywords: ["Golden Horde", "Juchi Ulus", "economy", "culture"] },
+    { text: "3. The White Horde (Ak-Orda): role in the formation of Kazakh statehood.", minChars: 1500, keywords: ["White Horde", "Ak-Orda", "Kazakh statehood"] },
+    { text: "4. The Chagatai Ulus and its influence on Central Asia.", minChars: 1500, keywords: ["Chagatai Ulus", "Central Asia", "influence"] },
+    { text: "5. The Nogai Horde: tribal confederation and political role.", minChars: 1500, keywords: ["Nogai Horde", "tribal confederation", "political role"] },
+    { text: "6. The State of Moghulistan: rulers, territory, and foreign policy.", minChars: 1500, keywords: ["Moghulistan", "rulers", "territory", "foreign policy"] },
+    { text: "7. The State of the Nomadic Uzbeks (Khanate of Abulkhair, 1428\u20131468) and its ethnopolitical processes.", minChars: 1500, keywords: ["Nomadic Uzbeks", "Abulkhair", "khanate", "ethnopolitical"] },
   ],
 };
 
@@ -168,6 +199,50 @@ function resolveEssayTopic(rawTopic) {
   }
   return rawTopic;
 }
+
+/* ------------------------------------------------------------
+   1b. QUIZ PREP ARTICLES ("prepare" section in the sidebar)
+   Full, book-style write-ups of each week's overall topic, so
+   people can actually study on the site before taking the quiz.
+   ------------------------------------------------------------ */
+
+const QUIZ_WEEK_ARTICLES = {
+  1: {
+    title: 'week 1 \u2014 the stone age in kazakhstan',
+    body: `
+      <p>Archaeologists divide Kazakhstan's Stone Age into the Paleolithic, Mesolithic, Neolithic, and Eneolithic. The Early Paleolithic stretches from roughly 2.6 million to 140,000 years ago and is represented by some of the oldest known sites in the region, including the Karatau range, where the first traces of early humans on this territory were found; the people who reached Kazakhstan at this time were contemporaries of Pithecanthropus, classified today as Homo erectus. The Middle Paleolithic runs to about 40,000 years ago and the Late Paleolithic to roughly 12,000 years ago, followed by the Mesolithic (12,000\u20135,000 BC).</p>
+      <p>Each stage is marked by a leap in tool technology. The earliest tool was the chopper, a pebble sharpened on one side; later industries produced microliths, small refined blades that are considered a hallmark of the Mesolithic, alongside the invention of the bow and arrow. The mastery of fire is regarded as the key discovery that separated early humans from the rest of the animal world, and pictography \u2014 drawing and carving on rock \u2014 became an early way of recording and passing on knowledge.</p>
+      <p>The Neolithic brought the most consequential change: the so-called Neolithic Revolution, in which an appropriating economy based on hunting, gathering, and fishing gave way to a productive economy built on agriculture and animal husbandry. Ceramic tableware appears as one of the era's signature achievements. This transition culminates locally in the Eneolithic Botai culture of Northern Kazakhstan, famous as one of the earliest sites in the world associated with horse domestication \u2014 a development that would shape the steppe's nomadic future for millennia.</p>
+      <p>Knowing which achievement belongs to which stage \u2014 and roughly when each stage falls \u2014 is the core of this week's material.</p>
+    `,
+  },
+  2: {
+    title: 'week 2 \u2014 the saka and the early iron age',
+    body: `
+      <p>The Early Iron Age in Kazakhstan begins around the 8th\u20137th centuries BC, when iron tools and weapons spread widely across the steppe, and is dominated by the Saka \u2014 nomadic and semi-nomadic pastoralist tribes who occupied much of the territory of Kazakhstan through the first millennium BC. Ancient Greek sources, most famously Herodotus, referred to them collectively as Scythians. The Saka were not one uniform group: Persian sources distinguish the Saka-tigrahauda ("wearing pointed hats"), the Saka-haomavarga (associated with the ritual drink haoma), and the Saka-paradaraya ("beyond the sea").</p>
+      <p>Saka society was stratified into warriors, priests, and ordinary community members, and this inequality shows up archaeologically in the differing size and richness of burial mounds (kurgans). The elite were buried in large royal kurgans; the Tasmola culture of Central Kazakhstan is distinguished by unusual "kurgans with moustaches" \u2014 burial mounds with long stone ridges extending from them. The most celebrated find is the "Golden Man," discovered in 1969 at the Issyk kurgan by archaeologist Kemal Akishev, whose rich gold ornaments testify to the wealth and craftsmanship of the Saka elite. The Besshatyr kurgans in Zhetysu are another major site tied to Saka burial architecture.</p>
+      <p>Saka art is defined by the "animal style" \u2014 dynamic, stylized images of animals and animal combat rendered in gold and bronze. Politically and militarily the Saka are remembered through figures such as Queen Tomyris of the Massagetae, who defeated and killed the Persian king Cyrus II, and the shepherd Shyrak, celebrated for leading Darius I's invading army into a waterless stretch of steppe during the Persian campaign against the Saka. Their economy rested on nomadic and semi-nomadic pastoralism.</p>
+    `,
+  },
+  3: {
+    title: 'week 3 \u2014 turkic khaganates and medieval states',
+    body: `
+      <p>The Turkic Khaganate, the first great Turkic state, was founded in 552 AD by Bumin Khagan. By 603 it had split into an Eastern and a Western Khaganate, the latter centered on Zhetysu with its capital at Suyab. The Western Khaganate's political core was known as the "Ten Tribes" (On Ok), made up of the Dulu and Nushibi tribal groups.</p>
+      <p>After the Western Khaganate's decline, the Turgesh Khaganate rose in its place, existing from 704 to 756 AD. It was founded by Ush-Elik, but its most famous ruler is Suluk Khagan, remembered for resisting the Arab conquests advancing from the south. This confrontation culminated in the Battle of Talas in 751 AD, fought between Arab (Abbasid) forces allied with the Karluks on one side and Tang Chinese forces on the other \u2014 the Karluks switched sides to join the Arabs during the battle. Following the Turgesh Khaganate's fall in 756, the Karluks established their own state in Zhetysu, lasting until 940 and controlling cities such as Taraz and Suyab by 766.</p>
+      <p>Elsewhere on the steppe, the Oghuz formed a state with its capital at Yangikent, ruled by a yabghu and said to have consisted of twenty-four tribes; the Kimeks built a khaganate across northeastern and Central Kazakhstan with its capital at Imakia, organized into twelve appanages and ruled first by a yabghu and later by a khagan.</p>
+      <p>The era closes with the Karakhanid state (942\u20131212), the first Turkic dynasty to formally adopt Islam as its state religion, in 960, with its capital at Balasagun. The period also produced major cultural achievements: Yusuf Balasaguni wrote the "Kutadgu Bilig" ("The Wisdom of Royal Glory"), while Mahmud al-Kashgari compiled the "D\u012bw\u0101n Lugh\u0101t al-Turk," a landmark dictionary of Turkic languages and dialects. Running through the whole period is the Great Silk Road, which connected these Turkic states to Byzantium, Iran, and China.</p>
+    `,
+  },
+  4: {
+    title: 'week 4 \u2014 the great steppe and the golden horde',
+    body: `
+      <p>After the Mongol conquests of the early 13th century, Genghis Khan divided his empire among his sons as uluses. His son Jochi received the western lands \u2014 the Great Steppe stretching into Eastern Europe \u2014 and this territory became known as the Ulus of Jochi, later famous as the Golden Horde. It was Jochi's son, Batu Khan, grandson of Genghis Khan, who actually founded and consolidated the state, establishing its first capital at Sarai-Batu near the Volga River; a second capital, Sarai-Berke, was founded later, and the Volga itself became the Horde's economic and political artery.</p>
+      <p>Politically, the Golden Horde was organized around tribal and military administration built on the Genghisid principle of the ulus \u2014 a territory belonging to a member of the ruling dynasty. Mongol institutions shaped daily life across the steppe: the yam system organized postal and communication routes, while yasak denoted the tribute collected from subject populations. Kipchak Turkic increasingly became the common language of the Horde's mixed population.</p>
+      <p>Islamization proceeded gradually: Berke Khan was among the first rulers to convert, but it was Uzbek Khan in the 14th century who made Islam the dominant religion of the state. The Horde controlled major trade centers \u2014 including Otrar in the east \u2014 and sat astride the Great Silk Road, linking Central Asia, China, and Europe.</p>
+      <p>Relations with the Russian principalities were defined by tribute payments to the khan, punctuated by conflict: Kyiv fell to Batu's forces in 1240, while in 1380 Russian forces defeated the Golden Horde's khan Mamai at the Battle of Kulikovo. Khan Tokhtamysh briefly reunited much of the Horde and sacked Moscow in 1382, but was later defeated by the Central Asian conqueror Timur. Internal political conflict and fragmentation through the 15th century broke the Golden Horde apart, giving rise to successor states \u2014 among them the Kazakh Khanate, the Crimean Khanate, and the Khanate of Kazan.</p>
+    `,
+  },
+};
 
 const QUIZ_QUESTIONS_PER_SESSION = 30; // Установлено ровно 30 вопросов для каждой недели
 const QUESTION_TIME_SECONDS = 30;
@@ -219,6 +294,10 @@ const screens = {
   home: $('mainbox-home-screen'),
   weekSelect: $('mainbox-week-screen'),
   materials: $('mainbox-materials-screen'),
+  prepHub: $('mainbox-prep-hub-screen'),
+  prepWeeks: $('mainbox-prep-weeks-screen'),
+  prepArticle: $('mainbox-prep-article-screen'),
+  prepEssay: $('mainbox-prep-essay-screen'),
   nameEntry: $('mainbox-start-screen'),
   info: $('mainbox-info-screen'),
   essayWrite: $('mainbox-essey-test-screen'),
@@ -237,10 +316,11 @@ const sidebarOverlay = $('sidebar-overlay');
 const sidebarCloseBtn = $('button-sidebar-close');
 const sidebarQuizBtn = $('sidebar-quiz');
 const sidebarEssayBtn = $('sidebar-essay');
+const sidebarPrepBtn = $('sidebar-prep');
 const sidebarInfoBtn = $('sidebar-info');
 
 const homeButtons = document.querySelectorAll('.button-home');
-const weekButtons = document.querySelectorAll('.button-week');
+const weekButtons = document.querySelectorAll('#mainbox-week-screen .button-week');
 const weekTitle = $('week-select-title');
 const weekSubtitle = $('week-select-subtitle');
 
@@ -248,6 +328,12 @@ const materialsTitle = $('materials-title');
 const materialsSubtitle = $('materials-subtitle');
 const materialsContent = $('materials-content');
 const materialsStartBtn = $('button-materials-start');
+
+const prepHubQuizBtn = $('button-prep-quiz');
+const prepHubEssayBtn = $('button-prep-essay');
+const prepWeekButtons = document.querySelectorAll('.prep-week-btn');
+const prepArticleTitle = $('prep-article-title');
+const prepArticleBody = $('prep-article-body');
 
 const nameLabel = $('p-YN');
 const nameInput = $('input-user-name');
@@ -350,9 +436,9 @@ homeButtons.forEach((btn) => {
 
 sidebarQuizBtn.addEventListener('click', () => chooseMode('quiz'));
 sidebarEssayBtn.addEventListener('click', () => chooseMode('essay'));
+sidebarPrepBtn.addEventListener('click', () => showScreen('prepHub'));
 sidebarInfoBtn.addEventListener('click', () => showScreen('info'));
 
-/* ---- Materials (study) screen ---- */
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -360,55 +446,65 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
-function renderMaterials() {
-  materialsTitle.textContent = state.mode === 'quiz'
-    ? `quiz materials \u2014 week ${state.week}`
-    : `essay materials \u2014 week ${state.week}`;
-  materialsSubtitle.textContent = state.mode === 'quiz'
-    ? 'every question in this week\u2019s bank, with the correct answer.'
-    : 'every topic this week\u2019s essay may assign you.';
-
-  materialsContent.innerHTML = '';
-
-  if (state.mode === 'quiz') {
-    const bank = QUIZ_BANKS[state.week] || [];
-    bank.forEach((q, i) => {
-      const div = document.createElement('div');
-      div.className = 'material-item';
-      div.innerHTML = `<p class="material-q">${i + 1}. ${escapeHtml(q.questionText)}</p>
-                        <p class="material-a">Answer: ${escapeHtml(q.variants[q.rightAnswerIndex])}</p>`;
-      materialsContent.appendChild(div);
-    });
-  } else {
-    const topics = ESSAY_TOPICS[state.week] || [];
-    topics.forEach((t) => {
-      const div = document.createElement('div');
-      div.className = 'material-item';
-      if (t.subtopics) {
-        const subsHtml = t.subtopics.map((s) => `<p class="material-sub">\u2022 ${escapeHtml(s.text)}</p>`).join('');
-        div.innerHTML = `<p class="material-q">one of the following will be assigned:</p>${subsHtml}`;
-      } else {
-        div.innerHTML = `<p class="material-q">${escapeHtml(t.text)}</p>`;
-      }
-      materialsContent.appendChild(div);
-    });
-  }
-}
-
-weekButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    state.week = Number(btn.dataset.week);
-    renderMaterials();
-    showScreen('materials');
-  });
-});
-
-materialsStartBtn.addEventListener('click', () => {
+function goToNameEntry() {
   nameLabel.textContent = 'Your name';
   nameInput.value = '';
   nameInput.placeholder = 'Please enter your name...';
   nameInput.style.borderColor = '';
   showScreen('nameEntry');
+}
+
+/* ---- Materials (essay topic list) screen ---- */
+function renderMaterials() {
+  materialsTitle.textContent = `essay materials \u2014 week ${state.week}`;
+  materialsSubtitle.textContent = 'one of these will be assigned to you.';
+
+  materialsContent.innerHTML = '';
+
+  const topics = ESSAY_TOPICS[state.week] || [];
+  topics.forEach((t) => {
+    const div = document.createElement('div');
+    div.className = 'material-item';
+    if (t.subtopics) {
+      const subsHtml = t.subtopics.map((s) => `<p class="material-sub">\u2022 ${escapeHtml(s.text)}</p>`).join('');
+      div.innerHTML = `<p class="material-q">one of the following will be assigned:</p>${subsHtml}`;
+    } else {
+      div.innerHTML = `<p class="material-q">${escapeHtml(t.text)}</p>`;
+    }
+    materialsContent.appendChild(div);
+  });
+}
+
+weekButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    state.week = Number(btn.dataset.week);
+    if (state.mode === 'essay') {
+      renderMaterials();
+      showScreen('materials');
+    } else {
+      goToNameEntry();
+    }
+  });
+});
+
+materialsStartBtn.addEventListener('click', goToNameEntry);
+
+/* ---- Prepare section ---- */
+prepHubQuizBtn.addEventListener('click', () => showScreen('prepWeeks'));
+prepHubEssayBtn.addEventListener('click', () => showScreen('prepEssay'));
+
+function renderPrepArticle(week) {
+  const article = QUIZ_WEEK_ARTICLES[week];
+  if (!article) return;
+  prepArticleTitle.textContent = article.title;
+  prepArticleBody.innerHTML = article.body;
+}
+
+prepWeekButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    renderPrepArticle(Number(btn.dataset.week));
+    showScreen('prepArticle');
+  });
 });
 
 nameInput.addEventListener('input', () => {

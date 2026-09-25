@@ -169,6 +169,26 @@ textarea:focus-visible {
     transform: scale(1.06);
 }
 
+#button-menu {
+    padding: 0.55rem 0.85rem;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.22rem;
+    width: 1.1rem;
+}
+
+.hamburger-icon span {
+    display: block;
+    height: 0.14rem;
+    width: 100%;
+    background: currentColor;
+    border-radius: 0.1rem;
+}
+
 /* ---------- Header ---------- */
 #hat {
     position: fixed;
@@ -449,6 +469,14 @@ textarea:focus-visible {
 }
 
 /* ---------- Week select screen ---------- */
+.screen.card h2 {
+    margin: 0;
+    color: var(--brown-darkest);
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+}
+
 #mainbox-week-screen h2 {
     margin: 0;
     color: var(--brown-darkest);
@@ -562,6 +590,58 @@ textarea:focus-visible {
     display: flex;
     justify-content: center;
     padding-top: 0.2rem;
+}
+
+/* ---------- Prepare: hub & week picker ---------- */
+#prep-hub-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.4rem;
+}
+
+#prep-week-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* ---------- Prepare: article / essay overview ---------- */
+#mainbox-prep-article-screen,
+#mainbox-prep-essay-screen {
+    padding-top: 6rem;
+}
+
+#prep-article-card,
+#prep-essay-card {
+    width: min(94vw, 50rem);
+    max-height: 84vh;
+    padding: 1.8rem 2rem;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#prep-article-card h2,
+#prep-essay-card h2 {
+    margin: 0 0 0.9rem;
+    color: var(--brown-darkest);
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+
+#prep-article-body p,
+#prep-essay-body p {
+    margin: 0 0 0.9rem;
+    line-height: 1.65;
+    color: var(--brown-darkest);
+}
+
+#prep-article-body p:last-child,
+#prep-essay-body p:last-child {
+    margin-bottom: 0;
 }
 
 /* ---------- Name entry ---------- */

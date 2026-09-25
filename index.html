@@ -22,7 +22,7 @@
         </button>
 
         <button type="button" class="icon-btn" id="button-menu" aria-label="Menu">
-            <span>menu</span>
+            <span class="hamburger-icon"><span></span><span></span><span></span></span>
         </button>
 
         <div id="div-topic-timer" style="display: none;">
@@ -50,6 +50,10 @@
             <button type="button" class="sidebar-btn" id="sidebar-essay" data-mode="essay">
                 <span class="btn-title">essay</span>
                 <span class="btn-sub">write &amp; get feedback</span>
+            </button>
+            <button type="button" class="sidebar-btn" id="sidebar-prep">
+                <span class="btn-title">prepare</span>
+                <span class="btn-sub">study guides before you test</span>
             </button>
             <button type="button" class="sidebar-btn" id="sidebar-info">
                 <span class="btn-title">info</span>
@@ -100,19 +104,77 @@
                 </button>
                 <button type="button" class="button-week" data-week="4">
                     <span class="week-num">week 4</span>
-                    <span class="week-hint" id="week-hint-4">3 topics</span>
+                    <span class="week-hint" id="week-hint-4">7 topics</span>
                 </button>
             </div>
         </section>
 
-        <!-- MATERIALS (study info shown before starting quiz/essay, per week) -->
+        <!-- MATERIALS (essay topic list shown before starting the essay, per week) -->
         <section id="mainbox-materials-screen" class="screen" style="display: none;">
             <div id="materials-card" class="card">
                 <h2 id="materials-title">materials</h2>
-                <p class="muted" id="materials-subtitle">review this before you start.</p>
+                <p class="muted" id="materials-subtitle">one of these will be assigned to you.</p>
                 <div id="materials-content"><!--filled by JS--></div>
                 <div id="materials-actions">
                     <button type="button" class="btn-primary" id="button-materials-start">i'm ready, start</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREPARE: hub -->
+        <section id="mainbox-prep-hub-screen" class="screen card" style="display: none;">
+            <h2>prepare</h2>
+            <p class="muted">study guides so you can walk in ready.</p>
+            <div id="prep-hub-buttons">
+                <button type="button" class="button-home" id="button-prep-quiz">
+                    <span class="btn-title">quiz guides</span>
+                    <span class="btn-sub">full write-ups, week by week</span>
+                </button>
+                <button type="button" class="button-home" id="button-prep-essay">
+                    <span class="btn-title">essay overview</span>
+                    <span class="btn-sub">a broad map of every topic</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PREPARE: pick a quiz week -->
+        <section id="mainbox-prep-weeks-screen" class="screen card" style="display: none;">
+            <h2>choose a week to study</h2>
+            <p class="muted">read the full topic before you take that week's quiz.</p>
+            <div id="prep-week-buttons">
+                <button type="button" class="button-week prep-week-btn" data-week="1">
+                    <span class="week-num">week 1</span>
+                </button>
+                <button type="button" class="button-week prep-week-btn" data-week="2">
+                    <span class="week-num">week 2</span>
+                </button>
+                <button type="button" class="button-week prep-week-btn" data-week="3">
+                    <span class="week-num">week 3</span>
+                </button>
+                <button type="button" class="button-week prep-week-btn" data-week="4">
+                    <span class="week-num">week 4</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PREPARE: full article for one quiz week -->
+        <section id="mainbox-prep-article-screen" class="screen" style="display: none;">
+            <div id="prep-article-card" class="card">
+                <h2 id="prep-article-title"></h2>
+                <div id="prep-article-body"><!--filled by JS--></div>
+            </div>
+        </section>
+
+        <!-- PREPARE: essay overview (deliberately broad, covers every week) -->
+        <section id="mainbox-prep-essay-screen" class="screen" style="display: none;">
+            <div id="prep-essay-card" class="card">
+                <h2>essay overview</h2>
+                <div id="prep-essay-body">
+                    <p>This course moves in four broad stages. It opens with humanity's deepest past on this territory — the long transition from stone tools and hunting-gathering to settled agriculture and animal husbandry — and asks why that shift mattered both globally and locally, including the special case of early horse domestication on the steppe.</p>
+                    <p>It then turns to the nomadic tribal confederations of the Early Iron Age: how they organized themselves politically and economically, and what their art, burial customs, and spiritual life reveal about their worldview.</p>
+                    <p>The third stage follows the rise of Turkic statehood — a sequence of khaganates and dynasties that rose, clashed with each other and with outside powers, and fell, while diplomacy and trade tied them to their neighbors and a flourishing of scholarship left a lasting cultural legacy.</p>
+                    <p>The final stage covers the Mongol era and its aftermath: how a vast empire was built, how its western portion evolved politically, economically, and culturally over roughly two centuries, why it eventually broke apart, and how the states that emerged from that fragmentation — including the ones that fed most directly into Kazakh statehood — took shape.</p>
+                    <p>Across every stage, the essays reward the same habits of mind: place events in their period, describe how power and the economy were organized, and explain how contact with neighbors — through trade, diplomacy, or conquest — shaped the outcome. The specific rulers, dates, and turning points are yours to research and argue for.</p>
                 </div>
             </div>
         </section>

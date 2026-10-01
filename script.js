@@ -756,6 +756,160 @@ function showQuizResults() {
     </div>`;
 }
 
-function resetEssayState() {}
-function startEssay() {}
-function stopEssayTimer() {}
+/* ------------------------------------------------------------
+   6. ESSAY FLOW + heuristic "AI" evaluation
+   ------------------------------------------------------------ */
+
+const topicTextEl = $('p-topic-text');
+const topicTimerEl = $('p-topic-timer');
+const essayInput = $('input-topic-input');
+const essayCounterEl = $('essay-char-counter');
+const langWarningEl = $('lang-warning');
+const essaySubmitBtn = $('button-save-and-exit');
+const essayResultScreen = $('mainbox-essay-result-screen');
+
+let essayTopic = null;
+let essayTimeLeft = ESSAY_TOTAL_MINUTES * 60;
+let essayTimerId = null;
+let essaySubmitted = false;
+
+function formatTime(totalSeconds) {
+  const m = Math.floor(Math.max(0, totalSeconds) / 60);
+  const sec = Math.max(0, totalSeconds) % 60;
+  return String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+}
+
+function stopEssayTimer() {
+  clearInterval(essayTimerId);
+  essayTimerId = null;
+}
+
+function resetEssayState() {
+  stopEssayTimer();
+  essayTopic = null;
+  essaySubmitted = false;
+  essayTimeLeft = ESSAY_TOTAL_MINUTES * 60;
+  if (essayInput) essayInput.value = '';
+  if (essayCounterEl) essayCounterEl.textContent = '';
+  if (langWarningEl) langWarningEl.style.display = 'none';
+  if (topicTimerEl) topicTimerEl.textContent = '';
+}
+
+// Essays must be written in English: warn if there are many Cyrillic letters.
+function hasNonEnglishText(text) {
+  const letters = text.match(/[A-Za-z\u0400-\u04FF]/g) || [];
+  if (letters.length < 20) return false;
+  const cyr = text.match(/[\u0400-\u04FF]/g) || [];
+  return cyr.length / letters.length > 0.2;
+}
+
+function updateEssayCounter() {
+  if (!essayTopic) return;
+  const len = essayInput.value.trim().length;
+  const need = essayTopic.minChars;
+  essayCounterEl.textContent = `${len} / ${need} characters`;
+  essayCounterEl.style.color = len >= need ? 'var(--success)' : 'var(--error)';
+  langWarningEl.style.display = hasNonEnglishText(essayInput.value) ? 'block' : 'none';
+}
+
+function startEssay() {
+  resetEssayState();
+  const topics = ESSAY_TOPICS[state.week] || [];
+  if (!topics.length) return;
+  essayTopic = resolveEssayTopic(pickRandom(topics));
+
+  topicTextEl.textContent = essayTopic.text;
+  updateEssayCounter();
+  topicTimerEl.textContent = formatTime(essayTimeLeft);
+
+  showScreen('essayWrite');
+
+  essayTimerId = setInterval(() => {
+    essayTimeLeft--;
+    topicTimerEl.textContent = formatTime(essayTimeLeft);
+    if (essayTimeLeft <= 0) {
+      stopEssayTimer();
+      submitEssay(true);
+    }
+  }, 1000);
+}
+
+essayInput.addEventListener('input', updateEssayCounter);
+essaySubmitBtn.addEventListener('click', () => submitEssay(false));
+
+function evaluateEssay(text, topic) {
+  const clean = text.trim();
+  const length = clean.length;
+  const lower = clean.toLowerCase();
+  const words = clean.split(/\s+/).filter(Boolean);
+  const sentences = clean.split(/[.!?]+/).filter((x) => x.trim().length > 0);
+
+  const lengthScore = clampNum(Math.round((length / topic.minChars) * 100), 0, 100);
+
+  const kws = topic.keywords || [];
+  const hits = kws.filter((k) => lower.includes(k.toLowerCase())).length;
+  const topicScore = kws.length ? clampNum(Math.round((hits / kws.length) * 100), 0, 100) : 70;
+
+  const avgSentence = sentences.length ? words.length / sentences.length : 0;
+  let structureScore = 40;
+  if (avgSentence >= 8 && avgSentence <= 28) structureScore += 30;
+  if (clean.split(/\n\s*\n/).length >= 3) structureScore += 15;
+  const dates = clean.match(/\b\d{3,4}\b/g) || [];
+  if (dates.length >= 3) structureScore += 15;
+  structureScore = clampNum(structureScore, 0, 100);
+
+  const total = Math.round(lengthScore * 0.35 + topicScore * 0.4 + structureScore * 0.25);
+  return { lengthScore, topicScore, structureScore, total, length, hits, kwTotal: kws.length };
+}
+
+function metricRow(label, value) {
+  return `<div class="metric-row">
+      <div class="metric-top"><span>${label}</span><span>${value}%</span></div>
+      <div class="metric-bar"><div class="metric-fill" style="width:${value}%"></div></div>
+    </div>`;
+}
+
+function submitEssay(timedOut) {
+  if (essaySubmitted || !essayTopic) return;
+  const text = essayInput.value;
+  const len = text.trim().length;
+
+  if (!timedOut) {
+    if (hasNonEnglishText(text)) {
+      langWarningEl.style.display = 'block';
+      return;
+    }
+    if (len < essayTopic.minChars) {
+      essayCounterEl.textContent = `Too short: ${len} / ${essayTopic.minChars} characters`;
+      essayCounterEl.style.color = 'var(--error)';
+      return;
+    }
+  }
+
+  essaySubmitted = true;
+  stopEssayTimer();
+
+  const r = evaluateEssay(text, essayTopic);
+  const passed = len >= essayTopic.minChars;
+  const status = timedOut
+    ? (passed ? 'Time is up \u2014 essay submitted.' : 'Time is up \u2014 the essay is shorter than required.')
+    : 'Essay submitted successfully.';
+
+  essayResultScreen.innerHTML = `<div class="essay-result-card card">
+      <h2>essay result</h2>
+      <p>${escapeHtml(state.userName)} \u00b7 week ${state.week}</p>
+      <p class="status-line">${status}</p>
+      <div class="rating-box">
+        <span class="rating-stars">${starString(r.total)}</span>
+        <span class="rating-label">overall: ${r.total}%</span>
+      </div>
+      <div class="essay-metrics">
+        ${metricRow('length', r.lengthScore)}
+        ${metricRow('topic coverage (' + r.hits + '/' + r.kwTotal + ' key terms)', r.topicScore)}
+        ${metricRow('structure', r.structureScore)}
+      </div>
+      <p class="ai-disclaimer">automatic estimate based on length, key terms and structure \u2014 not a real grade.</p>
+    </div>`;
+
+  showScreen('essayResult');
+}

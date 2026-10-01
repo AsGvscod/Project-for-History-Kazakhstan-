@@ -146,6 +146,39 @@ const QUIZ_BANKS = {
     { questionText: "What was one major reason for the decline of the Golden Horde in the 15th century?", variants: ["Internal political conflicts and fragmentation", "Lack of access to horses", "Disappearance of the Great Steppe", "Complete destruction of trade"], rightAnswerIndex: 0 },
     { questionText: "Which states emerged from the fragmentation of the Golden Horde?", variants: ["Kazakh Khanate, Crimean Khanate and Kazan Khanate", "Roman Empire and Byzantine Empire", "Seljuk and Ottoman Empires", "Western and Eastern Roman Empires"], rightAnswerIndex: 0 },
   ],
+  // Week 5 — The Kazakh Khanate
+  5: [
+    { questionText: "Who were the founders of the Kazakh Khanate?", variants: ["Kasym Khan and Haqnazar Khan", "Kerei Khan and Janibek Khan", "Tauke Khan and Abylai Khan", "Esim Khan and Tursun Khan"], rightAnswerIndex: 1 },
+    { questionText: "When was the Kazakh Khanate established?", variants: ["1227–1230", "1340–1345", "1465–1466", "1501–1505"], rightAnswerIndex: 2 },
+    { questionText: "From which state did Kerei and Janibek break away?", variants: ["Timurid Empire", "Golden Horde", "Uzbek Khanate of Abulkhair", "Moghulistan"], rightAnswerIndex: 2 },
+    { questionText: "Who provided territory for Kerei and Janibek after they left Abulkhair Khan?", variants: ["Timur", "Esen Buqa Khan of Moghulistan", "Babur", "Shaybani Khan"], rightAnswerIndex: 1 },
+    { questionText: "Where was the early Kazakh Khanate mainly established?", variants: ["Around the Chu and Talas rivers", "Around the Irtysh River", "Around the Caspian Sea", "Around the Syr Darya delta"], rightAnswerIndex: 0 },
+    { questionText: "Who became the first khan of the Kazakh Khanate?", variants: ["Janibek Khan", "Kerei Khan", "Kasym Khan", "Burunduk Khan"], rightAnswerIndex: 1 },
+    { questionText: "Which khan greatly expanded the territory and influence of the Kazakh Khanate in the early 16th century?", variants: ["Kasym Khan", "Tauke Khan", "Abylai Khan", "Kenesary Khan"], rightAnswerIndex: 0 },
+    { questionText: "What legal code is associated with Kasym Khan?", variants: ["Zheti Zhargy", "Kasym Khannyn Qasqa Zholy", "Esim Khannyn Eski Zholy", "Tore Bitiği"], rightAnswerIndex: 1 },
+    { questionText: "What does “Kasym Khannyn Qasqa Zholy” approximately mean?", variants: ["The Great Law of Tauke", "The Clear Path of Kasym Khan", "The Old Road of Esim Khan", "The Seven Laws"], rightAnswerIndex: 1 },
+    { questionText: "Which city became an important political center of the Kazakh Khanate?", variants: ["Turkistan", "Orenburg", "Astrakhan", "Tashkent"], rightAnswerIndex: 0 },
+    { questionText: "Who ruled the Kazakh Khanate after Kasym Khan and contributed to its recovery?", variants: ["Haqnazar Khan", "Abylai Khan", "Tauke Khan", "Kenesary Khan"], rightAnswerIndex: 0 },
+    { questionText: "During which period did Haqnazar Khan rule the Kazakh Khanate?", variants: ["1465–1480", "1511–1518", "1538–1580", "1680–1718"], rightAnswerIndex: 2 },
+    { questionText: "Which khan is associated with the law code known as “Esim Khannyn Eski Zholy”?", variants: ["Esim Khan", "Kasym Khan", "Tauke Khan", "Janibek Khan"], rightAnswerIndex: 0 },
+    { questionText: "What does “Esim Khannyn Eski Zholy” mean?", variants: ["The Seven Laws of Esim", "The Ancient Path of Esim Khan", "The Clear Path of Kasym", "The Great Road of Tauke"], rightAnswerIndex: 1 },
+    { questionText: "Which khan is traditionally associated with the consolidation of the three zhuzes?", variants: ["Kerei Khan", "Kasym Khan", "Tauke Khan", "Janibek Khan"], rightAnswerIndex: 2 },
+    { questionText: "When did Tauke Khan rule the Kazakh Khanate?", variants: ["1580–1598", "1628–1652", "1680–1718", "1731–1745"], rightAnswerIndex: 2 },
+    { questionText: "What was the name of Tauke Khan’s famous legal code?", variants: ["Qasqa Zholy", "Eski Zholy", "Zheti Zhargy", "Yassa"], rightAnswerIndex: 2 },
+    { questionText: "What does “Zheti Zhargy” mean?", variants: ["Seven Laws", "Seven Tribes", "Seven Khans", "Seven Roads"], rightAnswerIndex: 0 },
+    { questionText: "Which three zhuzes formed the traditional structure of Kazakh society?", variants: ["East, West, and South", "Great, Middle, and Junior", "Northern, Central, and Southern", "Senior, Central, and Lower"], rightAnswerIndex: 1 },
+    { questionText: "Which external enemy posed a major threat to the Kazakh Khanate in the 17th–18th centuries?", variants: ["Roman Empire", "Dzungar Khanate", "Ottoman Empire", "Mughal Empire"], rightAnswerIndex: 1 },
+    { questionText: "What is the name commonly given to the devastating Dzungar invasion of 1723–1727?", variants: ["Ak Orda", "Aktaban Shubyryndy", "Alash Movement", "Kazakh Renaissance"], rightAnswerIndex: 1 },
+    { questionText: "What does “Aktaban Shubyryndy, Alkakol Sulama” describe?", variants: ["A period of economic prosperity", "A major Kazakh victory", "A period of mass suffering and migration", "The founding of the Kazakh Khanate"], rightAnswerIndex: 2 },
+    { questionText: "Which battle in 1729–1730 is associated with a major Kazakh victory over the Dzungars?", variants: ["Battle of Talas", "Battle of Anyrakai", "Battle of Orbulak", "Battle of Otrar"], rightAnswerIndex: 1 },
+    { questionText: "Which Kazakh leader became particularly prominent in the struggle against the Dzungars?", variants: ["Abylai Khan", "Kerei Khan", "Janibek Khan", "Kasym Khan"], rightAnswerIndex: 0 },
+    { questionText: "Which khan became one of the most influential Kazakh rulers in the 18th century?", variants: ["Burunduk Khan", "Abylai Khan", "Haqnazar Khan", "Tursun Khan"], rightAnswerIndex: 1 },
+    { questionText: "What was one of Abylai Khan’s main diplomatic strategies?", variants: ["Complete isolation from neighboring states", "Balancing relations with Russia and Qing China", "Alliance only with the Ottoman Empire", "Abandoning diplomacy entirely"], rightAnswerIndex: 1 },
+    { questionText: "In which year did Abulkhair Khan of the Junior Zhuz accept Russian protection?", variants: ["1680", "1718", "1731", "1771"], rightAnswerIndex: 2 },
+    { questionText: "Which Russian empress ruled when the Junior Zhuz accepted Russian protection in 1731?", variants: ["Catherine I", "Anna Ioannovna", "Elizabeth Petrovna", "Catherine II"], rightAnswerIndex: 1 },
+    { questionText: "What was the main significance of the Kazakh Khanate in Kazakh history?", variants: ["It established a unified political framework for the Kazakh people", "It completely ended nomadic culture", "It was founded by the Russian Empire", "It existed only as a religious organization"], rightAnswerIndex: 0 },
+    { questionText: "Which ruler is generally considered the last khan of the Kazakh Khanate before its final abolition in the 19th century?", variants: ["Tauke Khan", "Abylai Khan", "Kenesary Khan", "Abulkhair Khan"], rightAnswerIndex: 2 },
+  ],
 };
 
 const ESSAY_TOPICS = {
@@ -189,6 +222,17 @@ const ESSAY_TOPICS = {
     { text: "5. The Nogai Horde: tribal confederation and political role.", minChars: 1500, keywords: ["Nogai Horde", "tribal confederation", "political role"] },
     { text: "6. The State of Moghulistan: rulers, territory, and foreign policy.", minChars: 1500, keywords: ["Moghulistan", "rulers", "territory", "foreign policy"] },
     { text: "7. The State of the Nomadic Uzbeks (Khanate of Abulkhair, 1428\u20131468) and its ethnopolitical processes.", minChars: 1500, keywords: ["Nomadic Uzbeks", "Abulkhair", "khanate", "ethnopolitical"] },
+  ],
+  // Week 5 — the Kazakh Khanate
+  5: [
+    { text: "1. Preconditions and formation of the Kazakh Khanate. Kerey and Janibek khan; legacy of Ak Orda/Abulkhair khan.", minChars: 1500, keywords: ["Kazakh Khanate", "Kerey", "Janibek", "Ak Orda", "Abulkhair"] },
+    { text: "2. XV–XVI c.: Kerey khan, Janibek khan, Kasym Khan and consolidation (“Qasym Khan’s Qasqa Joly”).", minChars: 1500, keywords: ["Kerey", "Janibek", "Kasym Khan", "Qasqa Joly", "consolidation"] },
+    { text: "3. Late XVI c.: Haqnazar khan, Shighai khan, Tauekel khan—expansion and regional diplomacy.", minChars: 1500, keywords: ["Haqnazar", "Shighai", "Tauekel", "expansion", "diplomacy"] },
+    { text: "4. XVII–early XVIII c.: Yesim khan, Zhangir khan, Tauke khan—state cohesion and “Zhety Jargy.”", minChars: 1500, keywords: ["Yesim", "Zhangir", "Tauke", "Zhety Jargy", "cohesion"] },
+    { text: "5. External relations: Nogai Horde, Bukhara & Khiva, Siberian Khanate/Russian Tsardom, Moghulistan, Oirats–Dzungars.", minChars: 1500, keywords: ["Nogai Horde", "Bukhara", "Khiva", "Siberian Khanate", "Moghulistan", "Dzungars"] },
+    { text: "6. The Dzungar wars and the “Aktaban Shubyryndy”. Key battles and consequences.", minChars: 1500, keywords: ["Dzungar", "Aktaban Shubyryndy", "battle", "Anyrakai", "consequences"] },
+    { text: "7. Territorial evolution and political-administrative structure (zhuzes, ulus divisions, khan–sultan–bi–batyr institutions; centers incl. Turkistan).", minChars: 1500, keywords: ["zhuz", "ulus", "khan", "sultan", "bi", "batyr", "Turkistan"] },
+    { text: "8. Kazakh society and culture: nomadic economy, spiritual life, folk literature & epics, customs and law.", minChars: 1500, keywords: ["nomadic", "spiritual", "folk literature", "epics", "customs", "law"] },
   ],
 };
 
@@ -242,6 +286,16 @@ const QUIZ_WEEK_ARTICLES = {
       <p>Relations with the Russian principalities were defined by tribute payments to the khan, punctuated by conflict: Kyiv fell to Batu's forces in 1240, while in 1380 Russian forces defeated the Golden Horde's khan Mamai at the Battle of Kulikovo. Khan Tokhtamysh briefly reunited much of the Horde and sacked Moscow in 1382, but was later defeated by the Central Asian conqueror Timur. Internal political conflict and fragmentation through the 15th century broke the Golden Horde apart, giving rise to successor states \u2014 among them the Kazakh Khanate, the Crimean Khanate, and the Khanate of Kazan.</p>
     `,
   },
+  5: {
+    title: 'week 5 \u2014 the kazakh khanate',
+    body: `
+      <p>The Kazakh Khanate was founded in 1465\u20131466 by Kerei Khan and Janibek Khan, who broke away from the Uzbek Khanate of Abulkhair and, with the permission of Esen Buqa Khan of Moghulistan, settled in the lands around the Chu and Talas rivers. Kerei is regarded as the first khan. The new state drew on the legacy of the Ak Orda and on the discontent of steppe tribes with Abulkhair's rule, and it gave the Kazakh people their first unified political framework.</p>
+      <p>Under Kasym Khan in the early 16th century the khanate expanded its territory and influence and consolidated its power. His law code, \u201cKasym Khannyn Qasqa Zholy\u201d (\u201cThe Clear Path of Kasym Khan\u201d), is the best known of the early steppe legal traditions. Turkistan became an important political center. After Kasym, Haqnazar Khan (ruled 1538\u20131580) helped the khanate recover; the later 16th century, including the reigns of Shighai and Tauekel, was marked by expansion and active regional diplomacy.</p>
+      <p>In the 17th and early 18th centuries Esim Khan, associated with the code \u201cEsim Khannyn Eski Zholy\u201d (\u201cThe Ancient Path of Esim Khan\u201d), and Zhangir Khan preserved the state's cohesion. Tauke Khan (1680\u20131718) is traditionally linked with the consolidation of the three zhuzes \u2014 the Great, Middle, and Junior \u2014 and with the code \u201cZheti Zhargy\u201d (\u201cThe Seven Laws\u201d). Political authority rested on the institutions of the khan, the sultans, the bis (judges), and the batyrs (warriors).</p>
+      <p>The khanate's external relations were wide-ranging: the Nogai Horde, Bukhara and Khiva, the Siberian Khanate and the Russian Tsardom, Moghulistan, and above all the Oirats\u2013Dzungars. The Dzungar Khanate was the main threat in the 17th\u201318th centuries. Its invasion of 1723\u20131727 is remembered as the \u201cAktaban Shubyryndy, Alkakol Sulama\u201d, a time of mass suffering and migration. The Kazakhs recovered and won a major victory at the Battle of Anyrakai (1729\u20131730), and Abylai Khan became a prominent leader in the struggle, later balancing relations between Russia and Qing China.</p>
+      <p>Meanwhile, in 1731 Abulkhair Khan of the Junior Zhuz accepted Russian protection, during the reign of Empress Anna Ioannovna. The last khan of the Kazakh Khanate before its abolition in the 19th century is generally considered to be Kenesary Khan. Alongside politics, Kazakh society was shaped by the nomadic economy, spiritual life, folk literature and epics, and a body of customs and law.</p>
+    `,
+  },
 };
 
 const QUIZ_QUESTIONS_PER_SESSION = 30; // Установлено ровно 30 вопросов для каждой недели
@@ -285,7 +339,7 @@ function starString(score0to100) {
 
 const state = {
   mode: null,        // 'quiz' | 'essay'
-  week: null,        // 1 | 2 | 3
+  week: null,        // 1 | 2 | 3 | 4 | 5
   userName: '',
   history: ['home'], // simple navigation stack of screen keys
 };
